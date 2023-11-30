@@ -2,13 +2,11 @@
 #include <stdlib.h>
 #include <math.h>
 
-
 typedef struct {
     double *items;
     int top;
     int size;
 } Stack;
-
 
 void initialize(Stack *stack, int size) {
     stack->items = (double *)malloc(size * sizeof(double));
@@ -16,16 +14,13 @@ void initialize(Stack *stack, int size) {
     stack->size = size;
 }
 
-
 int isEmpty(Stack *stack) {
     return stack->top == -1;
 }
 
-
 int isFull(Stack *stack) {
     return stack->top == stack->size - 1;
 }
-
 
 void push(Stack *stack, double item) {
     if (isFull(stack)) {
@@ -35,7 +30,6 @@ void push(Stack *stack, double item) {
     stack->items[++stack->top] = item;
 }
 
-
 double pop(Stack *stack) {
     if (isEmpty(stack)) {
         printf("Erro: Pilha vazia\n");
@@ -44,7 +38,6 @@ double pop(Stack *stack) {
     return stack->items[stack->top--];
 }
 
-
 double peek(Stack *stack) {
     if (isEmpty(stack)) {
         printf("Erro: Pilha vazia\n");
@@ -52,7 +45,6 @@ double peek(Stack *stack) {
     }
     return stack->items[stack->top];
 }
-
 
 double evaluatePostfixExpression(const char *expression) {
     Stack stack;
@@ -142,7 +134,6 @@ int main() {
         "3 4 + 5 t *"
     };
 
-    
     const double expected[] = {35, 18, 38, 24, 109, 0.140, 5, 16.20, 2.30, -23.66};
 
     for (int i = 0; i < sizeof(expressions) / sizeof(expressions[0]); ++i) {
